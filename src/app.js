@@ -130,10 +130,6 @@ function isAuthenticated(req, res, next) {
     res.send("no logeado");
   }
 }
-server.get("/", function(req, res){
-  res.send("hola");
-})
-
 server.get("/me", isAuthenticated, function (req, res) {
   User.findOne({ where: { id: req.user.id }, include: [Order] })
     .then((user) => {
